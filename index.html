@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CountDown HomePage </title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+        font-family: 'Rubik', sans-serif; 
+    }
+    body{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        background-color: beige;
+    }
+    .main{
+        margin-bottom: 250px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    form{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    input{
+        margin-bottom: 20px;
+        border-radius: 2%;
+        background-color: rgb(240, 100, 20);
+        padding: 10px;
+        width:400px;
+        padding: 15px;
+        font-size: 20px;
+        border-radius: 3px solid black;
+    }
+
+    button{
+        margin-bottom: 20px;
+        border-radius: 5%;
+        padding: 10px;
+        width: 150px;
+        padding: 15px;
+        font-size: 20px;
+        border-radius: 3px solid black;
+    }
+
+</style>
+
+
+<body>
+    <div class="main">
+
+        <h1>Enter your Task Deadline</h1>
+        <br>
+        <form action="countDown.html" method="GET">
+        <input type="datetime-local" required=true id="DateTime" value="" min="2000-10-06T22:22:55" max="2025-11-16T21:25:33" onchange="getDateTime()">
+        
+        <button>Submit</button>
+        </form>
+    </div>
+</body>
+
+
+
+
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; // +1 because of Month index start from 0
+    var yyyy = today.getFullYear();
+    var thisHour = today.getHours();
+    var thisMinute = today.getMinutes();
+
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+    if(thisHour<10){
+        thisHour = '0'+thisHour
+    }
+    if(thisMinute<10){
+        thisMinute = '0'+thisMinute
+    }
+
+
+    today = yyyy+'-'+mm+'-'+dd;
+    thisTime = thisHour+ ':'+ thisMinute;
+    finalJoin = today+'T'+thisTime;
+
+    document.getElementById("DateTime").setAttribute("min", finalJoin);
+
+
+    const getDateTime = () =>{
+        let tempDate = document.getElementById('DateTime').value;
+        localStorage.setItem("FinalInputDateTime",tempDate);
+    }
+</script>
+</html>

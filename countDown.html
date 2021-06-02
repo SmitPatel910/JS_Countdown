@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Rubik', sans-serif;
+            background-image: url("./snow.jpg");
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+        .head{
+            font-size: xx-large;
+            margin-top: -400px;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            margin-top: 50px;
+        }
+        .container div{
+            line-height: 50px;
+            margin: 0 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .container div h1{
+            text-align: center;
+        }
+        .container div p{
+            font-size: large;
+        }
+    </style>
+        <div class="head">
+                <h1>Count Down Ends in</h1>
+        </div>
+        <div class="container">
+            <div class="day">
+                <h1 id="day">00</h1>
+                <p>Days</p>
+            </div>
+            <div class="hour">
+                <h1 id="hour">00</h1>
+                <p>Hours</p>
+            </div>
+            <div class="mins">
+                <h1 id="mins">00</h1>
+                <p>Minutes</p>
+            </div>
+            <div class="secs">
+                <h1 id="secs">00</h1>
+                <p>Seconds</p>
+            </div>
+        </div>
+</body>
+
+
+<audio id="myAudio">
+  <source src="tone.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+var importedDate = localStorage.getItem("FinalInputDateTime");
+var FormatedDateTime = new Date(importedDate);
+
+function closingFun(){
+    window.alert("Counted Down Completed !!");
+    window.location.href = "thankyou.html";  
+}
+let count=0;
+function countDown() {   
+    const currentDateTime = new Date();
+    const difference = (FormatedDateTime - currentDateTime); 
+    const Totalseconds = (FormatedDateTime - currentDateTime) / 1000;
+    const days = Math.floor(Totalseconds/3600/24);
+    const hours = Math.floor(Totalseconds/3600) % 24;
+    const minutes = Math.floor(Totalseconds/60) % 60;
+    const seconds =  Math.floor(Totalseconds % 60);
+
+    document.getElementById("day").innerHTML = days;
+    document.getElementById("hour").innerHTML = hours;
+    document.getElementById("mins").innerHTML = minutes;
+    document.getElementById("secs").innerHTML = seconds;
+    
+    
+    if(days==0 && hours==0 && minutes==0 && seconds==0){
+        var x = document.getElementById("myAudio");     
+        x.play(); 
+        count=1;
+        closingFun();
+    }
+
+}
+
+// Call the function
+if(count==0){
+countDown();
+setInterval(countDown , 1000);
+}
+
+
+</script>
+
+</html>
