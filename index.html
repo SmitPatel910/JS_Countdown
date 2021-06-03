@@ -22,6 +22,7 @@
         flex-direction: column;
         background-color: beige;
     }
+
     .main{
         margin-bottom: 250px;
         display: flex;
@@ -36,6 +37,7 @@
         align-items: center;
         margin-top: 20px;
     }
+
     input{
         margin-bottom: 20px;
         border-radius: 2%;
@@ -57,6 +59,28 @@
         border-radius: 3px solid black;
     }
 
+    @media only screen and (max-width: 650px){
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div form input{
+            display: flex;
+            max-width: 80vw;
+            padding: 5px 5px;
+            font-size: 20px;
+        }
+    }   
+    
 </style>
 
 

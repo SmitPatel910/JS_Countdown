@@ -46,7 +46,41 @@
         .container div p{
             font-size: large;
         }
+
+        @media only screen and (max-width: 350px){
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            margin-left:25px ;
+        }
+
+    } 
+        @media only screen and (max-width: 650px){
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .head{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+    } 
+
+
     </style>
+
         <div class="head">
                 <h1>Count Down Ends in</h1>
         </div>
